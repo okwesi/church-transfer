@@ -1,0 +1,219 @@
+{% extends "transfers/header.html" %}
+
+{% block content %}
+
+
+{% load static %}
+
+<style>
+    .margin_top {
+        margin-top: 10px;
+    }
+
+    body {
+        color: #797979;
+        background: #f1f2f7;
+        font-family: 'Open Sans', sans-serif;
+        padding: 0px !important;
+        margin: 0px !important;
+        font-size: 13px;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-font-smoothing: antialiased;
+    }
+
+    .profile-nav,
+    .profile-info {
+        margin-top: 30px;
+    }
+
+    .profile-nav .user-heading {
+        color: #fff;
+        border-radius: 4px 4px 0 0;
+        -webkit-border-radius: 4px 4px 0 0;
+        padding: 30px;
+        text-align: center;
+        height: 350px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    }
+
+    .profile-nav .user-heading.round .round {
+        border-radius: 10%;
+        -webkit-border-radius: 50%;
+        border: 10px solid rgba(255, 255, 255, 0.3);
+        display: inline-block;
+        height: 300px;
+        width: 300px;
+    }
+
+    .profile-nav .user-heading .round img {
+        width: 290px;
+        height: 290px;
+        border-radius: 50%;
+        padding-right: 10px;
+        padding-bottom: 10px;
+        -webkit-border-radius: 50%;
+    }
+
+    .profile-nav .user-heading h1 {
+        font-size: 22px;
+        font-weight: 300;
+        margin-bottom: 5px;
+
+    }
+
+    .profile-nav .user-heading p {
+        font-size: 12px;
+    }
+
+
+
+    .profile-nav ul>li:last-child {
+        border-bottom: none;
+    }
+
+    .profile-nav ul>li>a {
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        color: #89817f;
+        border-left: 5px solid #fff;
+    }
+
+    .profile-nav ul>li:last-child>a:last-child {
+        border-radius: 0 0 4px 4px;
+        -webkit-border-radius: 0 0 4px 4px;
+    }
+
+    .p-text-area,
+    .p-text-area:focus {
+        border: none;
+        font-weight: 300;
+        box-shadow: none;
+        color: #c3c3c3;
+        font-size: 16px;
+    }
+
+    .profile-info .panel-footer {
+        background-color: #f8f7f5;
+        border-top: 1px solid #e7ebee;
+    }
+
+    .profile-info .panel-footer ul li a {
+        color: #7a7a7a;
+    }
+
+
+    .bio-graph-info {
+        color: #89817e;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    }
+
+    .bio-graph-info h1 {
+        font-size: 22px;
+        font-weight: 300;
+        margin: 0 0 40px;
+    }
+
+    .bio-row {
+        width: 50%;
+        float: left;
+        margin-bottom: 10px;
+        padding: 0 15px;
+    }
+
+    .bio-row .card1 p span {
+        width: 100px;
+        display: inline-block;
+    }
+</style>
+
+
+<div class="container bootstrap snippets bootdey" style=" margin-top:20px;">
+    <div class="row">
+        <div class="profile-nav col-md-4">
+            <div class="panel">
+                <div class="user-heading round bg-primary">
+                    <div class="round">
+                        <img src="{{staff.image.url}}" alt="{{staff.name}}">
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+
+        <div class="profile-info col-md-8 w3-large">
+
+            <div class="panel">
+
+                <div class="panel-body bio-graph-info ">
+                    <h1>Bio Graph</h1>
+                    <div class="row">
+                        <div class="bio-row">
+                            <p><span>Name </span>: {{staff.name}}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Postition </span>: {{staff.position}}</p>
+                        </div>
+                         <div class="bio-row">
+                            <p><span>Employed</span>: {{staff.date_employed}} </p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span> Birthday </span>: {{staff.date_of_birth}}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Position </span>: {{staff.position}}</p>
+                        </div>
+
+                          <div class="bio-row">
+                            <p><span> Country </span>: {{staff.country}} </p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Area </span>: {{staff.area}}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>District </span>: {{staff.district}}</p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span>Local </span>: {{staff.local}} </p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span> Salary </span>: GHs{{staff.salary}} </p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span> Telephone </span>: {{staff.telephone}} </p>
+                        </div>
+                        <div class="bio-row">
+                            <p><span> Email </span>: {{staff.email}} </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div>
+
+                <div class="row  margin_top">
+                {% for transfer in staff.transferhistory_set.all %}
+                    <div class="col-md-6 col-lg-6">
+                        <div class="card card1" style="box-shadow: rgba(50, 50, 93, 0.25) 
+                        0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;">
+                            <h4 style="color: red;">Transfer</h4> 
+                            <p><span>Transfer Date</span>: {{transfer.date_transferred}} </p>
+                            <p>Transferred From : {{transfer.transferred_from}} </p>
+                            <p>Transfer From Area : {{transfer.from_area}} </p>
+                            <p>Transfer To : {{transfer.transferred_to}} </p>
+                            <p>Transfer To Area : {{transfer.to_area}} </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

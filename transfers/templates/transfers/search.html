@@ -1,0 +1,27 @@
+{% extends "transfers/header.html" %}
+
+{% block content %}
+
+
+{% load static %}
+<div class="row">
+
+      {% for staff in transfers %}
+  <div class="col-sm-12 col-md-6 col-lg-3">
+    <div class="card container-fluid" style="margin:10px 10px 10px 0px;
+     padding: 10px; box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+">
+      <img src="{{ staff.picture.url }}" class="card-img-top rounded-circle mx-auto" style="width:200px; height:200px; margin:0px 0px 0px 20px;  "alt="...">
+      <div class="card-body text-center">
+        <h5 class="card-title ">{{staff.name}}</h5>
+        <p class="card-text">{{staff.local}}</p>
+        <a href="{% url 'staff' staff.staff_id staff.name %}" class="btn btn-primary" style="width:200px;">Details</a>
+      </div>
+    </div>
+    </div>
+     {% endfor %}
+  </div>
+
+
+
+{% endblock %}

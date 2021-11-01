@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'transfers.apps.TransfersConfig',
     'cloudinary_storage',
     'cloudinary',
+    'transfers',
 ]
 
 MIDDLEWARE = [
